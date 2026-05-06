@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.env
+migrations/
+migrations/*
+*.sqlite3
+*.db
+*.log
+.DS_Store
+.vscode/
+.idea/
+CHANGELOG.md
+README.md
