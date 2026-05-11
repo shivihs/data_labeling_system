@@ -11,3 +11,4 @@ migrations/*
 .idea/
 CHANGELOG.md
 README.md
+count_ratings.py
