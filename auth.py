@@ -1,4 +1,5 @@
 import os
+import re
 from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv(usecwd=True), override=True)
@@ -9,10 +10,16 @@ ROLES = ("UE", "NGO", "PSYCHOLOG", "PSYCHIATRA", "TEST")
 def _role_to_uuids() -> dict[str, list[str]]:
     out: dict[str, list[str]] = {}
     for role in ROLES:
-        val = os.getenv(f"{role}_KEY")
-        if not val:
-            continue
-        uuids = [u.strip().lower() for u in val.split(",") if u.strip()]
+        pattern = re.compile(rf"^{role}_KEY(?:_\d+)?$")
+        uuids: list[str] = []
+        for name in sorted(os.environ):
+            if not pattern.match(name):
+                continue
+            val = os.environ.get(name) or ""
+            for part in val.split(","):
+                token = part.strip().lower()
+                if token:
+                    uuids.append(token)
         if uuids:
             out[role] = uuids
     return out
