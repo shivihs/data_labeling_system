@@ -5,12 +5,12 @@ import streamlit as st
 from auth import resolve_role, role_prefix, is_test_mode, loaded_roles
 import db
 
-CATEGORIES = ("OK", "OFFLABEL", "MEDICAL_SENSITIVE", "CRISIS", "ATTACK")
+CATEGORIES = ("OK", "OFFTOPIC", "MEDICAL_SENSITIVE", "CRISIS", "ATTACK")
 JUST_MAX_CHARS = 150
 
 CAT_COLORS: dict[str, tuple[str, str]] = {
     "OK":                ("#1f9d55", "#ffffff"),
-    "OFFLABEL":          ("#d69e2e", "#1a202c"),
+    "OFFTOPIC":          ("#d69e2e", "#1a202c"),
     "MEDICAL_SENSITIVE": ("#805ad5", "#ffffff"),
     "CRISIS":            ("#dd6b20", "#ffffff"),
     "ATTACK":            ("#c53030", "#ffffff"),
